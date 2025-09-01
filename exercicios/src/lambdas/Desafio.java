@@ -17,9 +17,6 @@ public class Desafio {
 		UnaryOperator<Double> frete =
 				preco -> preco >= 3000 ? preco + 100 : preco + 50;
 		
-		UnaryOperator<Double> arredondar = 
-				preco -> Double.parseDouble(String.format("%.2f", preco));
-		
 		Function<Double,String> formatar = 
 				preco -> ("R$" + preco).replace(".", ",");
 		

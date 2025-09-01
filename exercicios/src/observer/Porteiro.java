@@ -15,21 +15,21 @@ public class Porteiro extends Thread{
 	
 	@Override
 	public void run() {
-		Scanner scanner = new Scanner(System.in);
-		
-		while(true) {
-			int valor = scanner.nextInt();
-			
-			if(valor == 1) {
-				ChegadaAniversarianteEvent event = new ChegadaAniversarianteEvent(new Date());
+		try (Scanner scanner = new Scanner(System.in)) {
+			while(true) {
+				int valor = scanner.nextInt();
 				
-				// Notificar os observers
-				for(ChegadaAniversarianteObserver observer: this.observers) {
-					observer.chegou(event);
+				if(valor == 1) {
+					ChegadaAniversarianteEvent event = new ChegadaAniversarianteEvent(new Date());
+					
+					// Notificar os observers
+					for(ChegadaAniversarianteObserver observer: this.observers) {
+						observer.chegou(event);
+					}
+					
+				} else {
+					System.out.println("Alarme falso");
 				}
-				
-			} else {
-				System.out.println("Alarme falso");
 			}
 		}
 	}
